@@ -1,4 +1,3 @@
-<!-- resources/views/activities/edit.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +10,13 @@
 
         <div class="mb-3">
             <label for="type" class="form-label">Type</label>
-            <input type="text" name="type" id="type" class="form-control" value="{{ $activity->type }}" required>
+            <select name="type" id="type" class="form-control" required>
+                <option value="surf" {{ $activity->type == 'surf' ? 'selected' : '' }}>Surf</option>
+                <option value="windsurf" {{ $activity->type == 'windsurf' ? 'selected' : '' }}>Windsurf</option>
+                <option value="kayak" {{ $activity->type == 'kayak' ? 'selected' : '' }}>Kayak</option>
+                <option value="atv" {{ $activity->type == 'atv' ? 'selected' : '' }}>ATV</option>
+                <option value="hot air balloon" {{ $activity->type == 'hot air balloon' ? 'selected' : '' }}>Hot Air Balloon</option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -36,7 +41,11 @@
 
         <div class="mb-3">
             <label for="satisfaction" class="form-label">Satisfaction (0-10)</label>
-            <input type="number" name="satisfaction" id="satisfaction" class="form-control" value="{{ $activity->satisfaction }}" min="0" max="10">
+            <select name="satisfaction" id="satisfaction" class="form-control">
+                @for ($i = 0; $i <= 10; $i++)
+                    <option value="{{ $i }}" {{ $activity->satisfaction == $i ? 'selected' : '' }}>{{ $i }}</option>
+                    @endfor
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Update Activity</button>
