@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['surf', 'windsurf', 'kayak', 'atv', 'hot air balloon']);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->dateTime('datetime');
+            $table->boolean('paid')->default(false);
+            $table->text('notes')->nullable();
+            $table->integer('satisfaction')->nullable()->default(null); 
             $table->timestamps();
         });
     }
