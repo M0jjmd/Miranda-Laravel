@@ -29,16 +29,17 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'type' => 'required|string',
             'user_id' => 'required|exists:users,id',
             'datetime' => 'required|date',
-            'paid' => 'boolean',
             'notes' => 'nullable|string',
             'satisfaction' => 'nullable|integer|min:0|max:10',
         ]);
 
-        Activity::create($request->all());
+        $data['paid'] = $request->has('paid');
+
+        Activity::create($data);
 
         return redirect()->route('activities.index')->with('success', 'Activity created successfully.');
     }
@@ -67,17 +68,18 @@ class ActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+        $data = $request->validate([
             'type' => 'required|string',
             'user_id' => 'required|exists:users,id',
             'datetime' => 'required|date',
-            'paid' => 'boolean',
             'notes' => 'nullable|string',
             'satisfaction' => 'nullable|integer|min:0|max:10',
         ]);
 
+        $data['paid'] = $request->has('paid') ? true : false;
+
         $activity = Activity::findOrFail($id);
-        $activity->update($request->all());
+        $activity->update($data);
 
         return redirect()->route('activities.index')->with('success', 'Activity updated successfully.');
     }

@@ -8,7 +8,14 @@
         @csrf
         <div class="mb-3">
             <label for="type" class="form-label">Type</label>
-            <input type="text" name="type" id="type" class="form-control" required>
+            <select name="type" id="type" class="form-control" required>
+                <option value="" disabled selected>Select a type</option>
+                <option value="surf">Surf</option>
+                <option value="windsurf">Windsurf</option>
+                <option value="kayak">Kayak</option>ss
+                <option value="atv">ATV</option>
+                <option value="hot air balloon">Hot Air Balloon</option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -33,7 +40,11 @@
 
         <div class="mb-3">
             <label for="satisfaction" class="form-label">Satisfaction (0-10)</label>
-            <input type="number" name="satisfaction" id="satisfaction" class="form-control" min="0" max="10">
+            <select name="satisfaction" id="satisfaction" class="form-control">
+                @for ($i = 0; $i <= 10; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Create Activity</button>
