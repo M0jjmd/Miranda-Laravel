@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -27,7 +29,26 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'room_id' => 'required|exists:rooms,id',
+            'check_in' => 'required|date|after_or_equal:today',
+            'check_out' => 'required|date|after:check_in',
+        ]);
+
+        $room = Room::find($request->room_id);
+        $room->status = 'booked';
+        $room->save();
+
+        Booking::create([
+            'room_id' => $request->room_id,
+            'order_date' => now(),
+            'check_in' => $request->check_in,
+            'check_out' => $request->check_out,
+            'status' => 'in-progress',
+        ]);
+
+        return redirect()->route('rooms.index')
+            ->with('success', 'Reserva realizada con éxito');
     }
 
     /**

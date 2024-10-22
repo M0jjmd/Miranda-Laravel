@@ -13,9 +13,15 @@ class RoomSeeder extends Seeder
      */
     public function run(): void
     {
-        Room::factory(10)->create()->each(function ($room) {
-            $facilities = Facility::inRandomOrder()->take(rand(2, 4))->pluck('id');
-            $room->facilities()->attach($facilities);
-        });
+        $rooms = Room::factory(10)->create();
+        $facilities = Facility::all();
+
+        foreach ($rooms as $room) {
+            $numberOfFacilities = rand(1, $facilities->count());
+
+            $randomFacilities = $facilities->random($numberOfFacilities);
+
+            $room->facilities()->attach($randomFacilities);
+        }
     }
 }
