@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
             $table->dateTime('order_date');
             $table->dateTime('check_in');
             $table->dateTime('check_out');
             $table->text('special_request')->nullable();
-            $table->enum('room_type', ['Single', 'Double', 'Suite']);
             $table->enum('status', ['checked-in', 'checked-out', 'in-progress']);
             $table->timestamps();
         });

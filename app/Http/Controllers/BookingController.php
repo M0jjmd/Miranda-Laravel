@@ -13,15 +13,10 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
-    }
+        // dd(auth()->user());
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $bookings = Booking::where('user_id', auth()->id())->get();
+        return view('bookings.index', compact('bookings'));
     }
 
     /**
@@ -29,57 +24,37 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'room_id' => 'required|exists:rooms,id',
-            'check_in' => 'required|date|after_or_equal:today',
+            'check_in' => 'required|date',
             'check_out' => 'required|date|after:check_in',
+            'special_request' => 'nullable|string|max:255',
         ]);
 
-        $room = Room::find($request->room_id);
+        $booking = new Booking($validated);
+        $booking->user_id = auth()->id();
+        $booking->order_date = now();
+        $booking->status = 'checked-in';
+        $booking->save();
+
+        $room = Room::findOrFail($request->room_id);
         $room->status = 'booked';
         $room->save();
 
-        Booking::create([
-            'room_id' => $request->room_id,
-            'order_date' => now(),
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
-            'status' => 'in-progress',
-        ]);
-
-        return redirect()->route('rooms.index')
-            ->with('success', 'Reserva realizada con éxito');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return redirect()->route('bookings.index')->with('success', 'Booking created and room marked as booked.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Booking $booking)
     {
-        //
+        $room = $booking->room;
+        $room->status = 'available';
+        $room->save();
+
+        $booking->delete();
+
+        return redirect()->route('bookings.index')->with('success', 'Booking deleted and room is now available.');
     }
 }

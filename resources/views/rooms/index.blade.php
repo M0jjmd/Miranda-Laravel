@@ -16,10 +16,10 @@
                 <th>Photo</th>
                 <th>Room Number</th>
                 <th>Bed Type</th>
-                <th>Tarifa</th>
-                <th>Precio de Oferta</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                <th>Rate</th>
+                <th>Discounted price</th>
+                <th>State</th>
+                <th>Accions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
                 <td>${{ $room->offer_price }}</td>
                 <td>{{ ucfirst($room->status) }}</td>
                 <td>
-                    <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-info">View</a>
                 </td>
             </tr>
             @endif

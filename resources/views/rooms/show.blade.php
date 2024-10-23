@@ -19,23 +19,31 @@
                 @endforeach
             </ul>
             </p>
+            <button id="startBooking" class="btn btn-primary">Start Booking</button>
+            <a href="{{ route('rooms.index') }}" class="btn btn-secondary">Back to Activities</a>
+            <div id="bookingForm" style="display:none;">
+                <form action="{{ route('bookings.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="room_id" value="{{ $room->id }}">
 
-            <form action="{{ route('bookings.store') }}" method="POST">
-                @csrf
-                <input type="hidden" name="room_id" value="{{ $room->id }}">
+                    <div class="form-group">
+                        <label for="check_in">Check-in</label>
+                        <input type="date" name="check_in" id="check_in" class="form-control" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="check_in">Check-in</label>
-                    <input type="date" name="check_in" id="check_in" class="form-control" required>
-                </div>
+                    <div class="form-group">
+                        <label for="check_out">Check-out</label>
+                        <input type="date" name="check_out" id="check_out" class="form-control" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="check_out">Check-out</label>
-                    <input type="date" name="check_out" id="check_out" class="form-control" required>
-                </div>
+                    <div class="form-group">
+                        <label for="special_request">Special Request</label>
+                        <textarea name="special_request" id="special_request" class="form-control" rows="3" placeholder="Any special requests"></textarea>
+                    </div>
 
-                <button type="submit" class="btn btn-primary mt-3">Book room</button>
-            </form>
+                    <button type="submit" class="btn btn-primary mt-3">Book room</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

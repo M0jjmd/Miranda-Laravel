@@ -38,16 +38,18 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
     public function activity()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

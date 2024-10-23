@@ -23,4 +23,6 @@ class Room extends Model
     {
         return $this->belongsToMany(Facility::class, 'facility_room');
     }
+
+    
 }

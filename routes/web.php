@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('activities', ActivityController::class);
     Route::resource('rooms', RoomController::class)->only(['index', 'show']);
-    Route::resource('bookings', BookingController::class)->only(['store']);
+    Route::resource('bookings', BookingController::class)->only(['index', 'store', 'destroy']);
 });
 
 require __DIR__ . '/auth.php';
