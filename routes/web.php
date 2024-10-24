@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoomController;
 
 Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('activities', ActivityController::class);
     Route::resource('rooms', RoomController::class)->only(['index', 'show']);
     Route::resource('bookings', BookingController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('contacts', ContactController::class)->only(['create', 'store']);
 });
 
 require __DIR__ . '/auth.php';
