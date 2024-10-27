@@ -13,7 +13,7 @@ class RoomController extends Controller
     {
         $rooms = Room::with('facilities')->where('status', 'available')->get();
 
-        return view('rooms.index', compact('rooms'));
+        return view('rooms', compact('rooms'));
     }
     /**
      * Display single listing of the resource.

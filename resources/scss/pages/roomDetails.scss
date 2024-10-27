@@ -1,0 +1,381 @@
+.room-info {
+    width: 90%;
+    max-width: 35rem;
+    margin: 0 auto;
+
+    &__type {
+        margin-bottom: 20px;
+
+        h2 {
+            font-family: 'Archivo';
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 1rem 0 0.5rem;
+            color: #777777;
+        }
+
+        h3 {
+            font-family: 'Old Standard TT';
+            font-weight: 400;
+            font-size: 2.4rem;
+            margin: 5px 0 10px 0;
+        }
+
+        h4 {
+            font-family: 'Archivo';
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #BEAD8E;
+            margin-bottom: 0.8rem;
+
+            span {
+                &.price {
+                    font-size: 2rem;
+                }
+
+                &:last-of-type {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        img {
+            display: block;
+            margin-top: 0.8rem;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
+
+.room-availability {
+    width: 90%;
+    max-width: 35rem;
+    margin: 0 auto;
+
+    &__availability {
+        margin-bottom: 2rem;
+
+        h2 {
+            text-align: center;
+            font-family: 'Archivo';
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        &__date {
+            margin-bottom: 1rem;
+            overflow: hidden;
+
+            label {
+                display: block;
+                width: 90%;
+                margin: 0 auto;
+                font-family: 'Archivo';
+                font-weight: 700;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            &__container {
+                display: flex;
+                align-items: center;
+                margin: 0 auto;
+                width: 90%;
+                padding: 0.4rem;
+                font-size: 0.8rem;
+                margin-bottom: 0.7rem;
+                padding: 1rem;
+                background-color: #F8F8F8;
+
+                span {
+                    margin-right: 0.7rem;
+                    font-family: 'Archivo';
+                    color: #777777;
+                }
+
+                input {
+                    color: #777777;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    text-align: center;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    padding: 0;
+                    position: relative;
+                    margin-left: auto;
+                }
+
+                input::-webkit-calendar-picker-indicator {
+                    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23000000" viewBox="0 0 24 24"%3E%3Cpath d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/%3E%3C/svg%3E') no-repeat center;
+                    color: transparent;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    cursor: pointer;
+                }
+
+                input::-webkit-inner-spin-button,
+                input::-webkit-clear-button {
+                    display: none;
+                }
+
+                input::-moz-focus-inner {
+                    border: 0;
+                }
+            }
+        }
+    }
+
+    &__Check-Availability {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        &__button {
+            width: 90%;
+        }
+    }
+
+    p {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: #777777;
+        margin: 3rem auto;
+    }
+}
+
+.room-info-text {
+    width: 90%;
+    max-width: 35rem;
+    margin: 0 auto;
+
+    p {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: #777777;
+        margin: 3rem auto;
+    }
+}
+
+.room-amenities {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 35rem;
+
+    &__title {
+        margin: 2rem auto;
+
+        h2 {
+            font-family: 'Old Standard TT';
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        hr {
+            width: 100%;
+            height: 1px;
+            background-color: #F1F1F1;
+            border: none;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__items {
+        &__container {
+            display: inline-block;
+            width: 48%;
+
+            &__specs {
+                list-style: none;
+
+                li {
+                    font-family: "Roboto";
+                    font-weight: 500;
+                    color: #777777;
+                    margin-bottom: 1rem;
+                    font-size: 0.88rem;
+
+                    img {
+                        margin-right: 0.5rem;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.room-testimonial {
+    text-align: center;
+    padding: 2rem;
+    width: 20rem;
+    margin: 0 auto;
+
+    &__image-container {
+        position: relative;
+        display: inline-block;
+
+        .room-testimonial__image {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .room-testimonial__tick {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .room-testimonial__tick-background {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                object-fit: cover;
+                position: absolute;
+                z-index: 1;
+            }
+
+            .room-testimonial__tick-icon {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+
+    &__name {
+        font-family: 'Old Standard TT';
+        font-weight: 400;
+        font-size: 2rem;
+        margin: 1rem 0 0.5rem;
+    }
+
+    &__position {
+        font-family: 'Archivo';
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+        color: #BDAC8D;
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        font-family: 'Archivo';
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #777777;
+    }
+}
+
+.cancellation {
+    width: 90%;
+    max-width: 35rem;
+    margin: 4rem auto;
+
+    h2 {
+        font-family: 'Old Standard TT';
+        font-size: 2rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
+
+    hr {
+        width: 100%;
+        height: 1px;
+        background-color: #F1F1F1;
+        border: none;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #777777;
+    }
+}
+
+.related-rooms {
+    width: 90%;
+    max-width: 35rem;
+    margin: 4rem auto;
+    text-align: center;
+
+    &__title {
+        width: 100%;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            font-family: 'Old Standard TT';
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        hr {
+            width: 100%;
+            height: 1px;
+            background-color: #F1F1F1;
+            border: none;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.related-room-gallery {
+    display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .arrows-swiper {
+        display: none;
+    }
+
+    .related-room-gallery {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .room-testimonial {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 8px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .main-container {
+        width: 70%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .room-info,
+    .room-info-text,
+    .room-amenities,
+    .room-testimonial,
+    .cancellation,
+    .related-rooms {
+        grid-column-start: 1;
+    }
+
+    .room-availability {
+        grid-column-start: 2;
+        margin-top: 7rem;
+    }
+}

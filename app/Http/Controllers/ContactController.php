@@ -12,7 +12,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        return view('contact');
     }
 
     /**
@@ -20,18 +20,28 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'subject' => 'required|string|max:255',
-            'comment' => 'required|string',
-        ]);
+        try {
+            $validated = $request->validate([
+                'subject' => 'required|string|max:255',
+                'comment' => 'required|string',
+            ]);
 
-        Contact::create([
-            'date' => now(),
-            'subject' => $validated['subject'],
-            'comment' => $validated['comment'],
-            'archive' => false,
-        ]);
+            Contact::create([
+                'date' => now(),
+                'subject' => $validated['subject'],
+                'comment' => $validated['comment'],
+                'archive' => false,
+            ]);
 
-        return redirect()->route('contacts.create')->with('success', 'Your message has been sent successfully!');
+            return redirect()->back()->with([
+                'message' => 'Message successfully sent',
+                'alert-type' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with([
+                'message' => 'Error: ' . $e->getMessage(),
+                'alert-type' => 'error',
+            ]);
+        }
     }
 }

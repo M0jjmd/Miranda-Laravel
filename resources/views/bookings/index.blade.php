@@ -1,16 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="bookings-container">
     <h1>Bookings List</h1>
-
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-
-    <table class="table">
+    <x-toast />
+    @if($bookings->isEmpty())
+    <p class="no-bookings-message">No bookings available at the moment.</p>
+    @else
+    <table class="bookings-table">
         <thead>
             <tr>
                 <th>Room</th>
@@ -31,12 +28,13 @@
                     <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="bookings-btn-delete">Delete</button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 @endsection

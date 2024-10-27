@@ -8,8 +8,20 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoomController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/about', function () {
+    return view('about');
+});
+Route::resource('rooms', RoomController::class)->only(['index', 'show']);
+Route::get('/room-details', function () {
+    return view('room-details');
+});
+Route::get('/offers', function () {
+    return view('offers');
+});
+Route::get('/contact', [ContactController::class, 'create'])->name('contacts.create');
+Route::post('/contact', [ContactController::class, 'store'])->name('contacts.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,9 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('activities', ActivityController::class);
-    Route::resource('rooms', RoomController::class)->only(['index', 'show']);
     Route::resource('bookings', BookingController::class)->only(['index', 'store', 'destroy']);
-    Route::resource('contacts', ContactController::class)->only(['create', 'store']);
 });
 
 require __DIR__ . '/auth.php';

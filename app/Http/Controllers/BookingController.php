@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -13,7 +14,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::where('user_id', auth()->id())->get();
+        $bookings = Booking::where('user_id', Auth::id())->get();
         return view('bookings.index', compact('bookings'));
     }
 
@@ -22,24 +23,34 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'room_id' => 'required|exists:rooms,id',
-            'check_in' => 'required|date',
-            'check_out' => 'required|date|after:check_in',
-            'special_request' => 'nullable|string|max:255',
-        ]);
+        try {
+            $validated = $request->validate([
+                'room_id' => 'required|exists:rooms,id',
+                'check_in' => 'required|date',
+                'check_out' => 'required|date|after:check_in',
+                'special_request' => 'nullable|string|max:255',
+            ]);
 
-        $booking = new Booking($validated);
-        $booking->user_id = auth()->id();
-        $booking->order_date = now();
-        $booking->status = 'checked-in';
-        $booking->save();
+            $booking = new Booking($validated);
+            $booking->user_id = Auth::id();
+            $booking->order_date = now();
+            $booking->status = 'checked-in';
+            $booking->save();
 
-        $room = Room::findOrFail($request->room_id);
-        $room->status = 'booked';
-        $room->save();
+            $room = Room::findOrFail($request->room_id);
+            $room->status = 'booked';
+            $room->save();
 
-        return redirect()->route('bookings.index')->with('success', 'Booking created and room marked as booked.');
+            return redirect()->route('bookings.index')->with([
+                'message' => 'Room successfully booked',
+                'alert-type' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with([
+                'message' => 'Error: ' . $e->getMessage(),
+                'alert-type' => 'error',
+            ]);
+        }
     }
 
     /**

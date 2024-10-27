@@ -1,0 +1,171 @@
+.header {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    padding: 0.5rem;
+
+    &__text {
+        display: none;
+    }
+
+    &__links {
+        display: none;
+        list-style-type: none;
+        background-color: #FFFFFF;
+
+        li {
+            margin: 1rem;
+
+            a {
+                text-decoration: none;
+                font-family: 'Archivo';
+                font-weight: 600;
+                font-size: 0.9rem;
+                color: #111111;
+            }
+        }
+    }
+
+    &__menu {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 1rem;
+
+        &:before {
+            content: '\2630';
+        }
+
+        &.show::before {
+            content: '✖';
+        }
+    }
+
+    &__title {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: auto;
+        margin-top: 0.4rem;
+
+        &__logo {
+            font-size: 1.2rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 1.6rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            & p {
+                font-family: "Archivo";
+                margin: 0 auto;
+                text-align: center;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        &__titl {
+            font-family: "Archivo";
+            display: inline-block;
+            vertical-align: middle;
+
+            & h1 {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            & h2 {
+                font-size: 1rem;
+                font-weight: 400;
+
+            }
+        }
+    }
+
+    &__login-search {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0.5rem auto;
+
+        &__imgs {
+            margin: 0.5rem;
+            width: 1.2rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            object-fit: cover;
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .header__text {
+        display: flex;
+        position: absolute;
+        z-index: 1;
+        background-color: #222222;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1rem;
+        color: white;
+        height: 11.5vh;
+        width: 100%;
+
+        p {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+
+    .header {
+        position: relative;
+        top: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        z-index: 10;
+        transition: transform 0.3s ease;
+
+        &__title {
+            margin-right: initial;
+            order: 1;
+            padding: 0rem 1rem;
+        }
+
+        &__links {
+            display: flex;
+            order: 2;
+            padding-left: 2rem;
+        }
+
+        &__login-search {
+            position: initial;
+            order: 3;
+            margin-left: auto;
+            margin-right: 1rem;
+
+            &__imgs {
+                border: 1px solid #8585854D;
+                padding: 0.3rem;
+                margin: 0.1rem;
+                margin: 0.5rem;
+                width: 2rem;
+                margin: 0.5rem;
+                cursor: pointer;
+                object-fit: cover;
+            }
+        }
+
+        &__menu {
+            display: none;
+        }
+    }
+
+    .hidden {
+        transform: translateY(-150%);
+    }
+}
