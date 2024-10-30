@@ -2,6 +2,8 @@
 
 @section('title', 'Offers')
 
+@vite(['resources/scss/pages/offers.scss' , 'resources/js/swiper.js', 'resources/js/openMenu.js' ])
+
 @section('content')
 <section class="home-local-page">
     <div class="home-local-page__title">
@@ -48,7 +50,6 @@
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehend erit in voluptate velit
                     esse
                     cillum dolore eu fugiat nulla pariatur.</p>
-                <!-- <a href="../pages/roomDetails.html" class="offer__items__book button">BOOK NOW</a> -->
                 <a href="{{ url('/room-details') }}" class="offer__items__book button">BOOK NOW</a>
             </div>
 
@@ -233,7 +234,7 @@
     </div>
 
     <div class="swiper arrows-swiper">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" style="height: auto;">
             <div class="swiper-slide">
                 <img src="../img/minDuplexRoom.avif" alt="luxuryRoom-1" class="swiper-img" />
                 <div class="swiper-description">
@@ -285,8 +286,8 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev custom-swiper-button"></div>
+        <div class="swiper-button-next custom-swiper-button"></div>
     </div>
     <div class="popular-room-gallery">
         <div class="popular-room-gallery__item">

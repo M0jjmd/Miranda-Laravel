@@ -2,6 +2,8 @@
 
 @section('title', 'Room Details')
 
+@vite(['resources/scss/pages/roomDetails.scss'])
+
 @section('content')
 <section class="home-local-page">
     <div class="home-local-page__title">
@@ -46,7 +48,6 @@
         </div>
         <div class="room-availability__Check-Availability">
             <button class="room-availability__Check-Availability__button button">CHECK AVAILABILITY</button>
-            <!-- <a href="{{ url('/room-details') }}" class="room-availability__Check-Availability__button button">CHECK AVAILABILITY</a> -->
         </div>
     </section>
 

@@ -2,6 +2,8 @@
 
 @section('title', 'About')
 
+@vite(['resources/scss/pages/about.scss', 'resources/js/swiper.js'])
+
 @section('content')
 <section class="home-local-page">
     <div class="home-local-page__title">
@@ -63,7 +65,7 @@
     </div>
 
     <div class="swiper simple-swiper" id="facilitie-swiper">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" style="height: auto;">
             <div class="swiper-slide">
                 <div class="swiper-background-number">01</div>
                 <div class="swiper-content">
@@ -235,7 +237,7 @@
 </section>
 
 <div class="swiper image-swiper" id="hotl-imgs">
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper" style="height: auto;">
         <div class="swiper-slide">
             <img src="../img/aboutImgs/happyPeopleHotel.jpg" alt="Image 1">
         </div>

@@ -13,7 +13,7 @@ class RoomSeeder extends Seeder
      */
     public function run(): void
     {
-        $rooms = Room::factory(10)->create();
+        $rooms = Room::factory(20)->create();
         $facilities = Facility::all();
 
         foreach ($rooms as $room) {

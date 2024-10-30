@@ -1,3 +1,5 @@
+@use '../constants/swiper';
+
 .home-detail {
     background-color: #333333;
     color: white;
@@ -826,7 +828,7 @@
         border: 0;
     }
 
-    .simple-swiper {
+    .swiper.simple-swiper {
         display: none;
     }
 

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/Toastify.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Scripts -->
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @vite(['resources/scss/app.scss', 'resources/js/app.js', 'resources/js/openMenu.js'])
 </head>
 
 <body class="font-sans antialiased">
@@ -37,11 +37,11 @@
 
     <x-toast />
 
-    <script src="{{ asset('js/formatDates.js') }}"></script>
+    <!-- <script src="{{ asset('js/formatDates.js') }}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="{{ asset('js/numbered-swiper.js') }}"></script>
-    <script src="{{ asset('js/openMenu.js') }}"></script>
-    <script src="{{ asset('js/swiper.js') }}"></script>
+    <!-- <script src="{{ asset('js/numbered-swiper.js') }}"></script> -->
+    <!-- <script src="{{ asset('js/openMenu.js') }}"></script> -->
+    <!-- <script src="{{ asset('js/swiper.js') }}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <script src="{{ asset('js/toastify.js') }}"></script>
 </body>

@@ -13,8 +13,8 @@
     object-fit: cover;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+.swiper-button-prev.custom-swiper-button,
+.swiper-button-next.custom-swiper-button {
     position: absolute;
     top: 50%;
     transform: translateY(-250%);
@@ -28,16 +28,16 @@
     cursor: pointer;
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
+.swiper-button-next.custom-swiper-button::after,
+.swiper-button-prev.custom-swiper-button::after {
     font-size: 1rem;
     color: black;
 }
 
-.swiper-button-prev {
+.swiper-button-prev.custom-swiper-button {
     left: 1rem;
 }
 
-.swiper-button-next {
+.swiper-button-next.custom-swiper-button {
     right: 1rem;
 }

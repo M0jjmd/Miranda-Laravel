@@ -2,6 +2,8 @@
 
 @section('title', 'Contact')
 
+@vite(['resources/scss/pages/contact.scss'])
+
 @section('content')
 <x-toast />
 <section class="home-local-page">
