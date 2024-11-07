@@ -16,7 +16,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa 
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-          env:
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Pull from GitHub repository and deploy
@@ -29,11 +29,11 @@ jobs:
             php artisan migrate || exit
             sudo systemctl restart apache2 || exit
           EOF
-          env:
+        env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
 
       - name: Check if server is up
         run: |
           curl -f http://$EC2_HOST || exit 1
-          env:
+        env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
