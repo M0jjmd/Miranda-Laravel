@@ -13,13 +13,15 @@ jobs:
       - name: Set up SSH keys
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa  # Usamos el secreto SSH
-          chmod 600 ~/.ssh/id_rsa  # Establecer permisos correctos para la clave
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts  # Para evitar problemas con la verificación del host
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Pull from GitHub repository and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@EC2_HOST << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@$EC2_HOST << 'EOF'
             sudo su || exit
             cd /var/www/Miranda-Laravel || exit
             git pull origin main || exit
@@ -27,7 +29,11 @@ jobs:
             php artisan migrate || exit
             sudo systemctl restart apache2 || exit
           EOF
+          env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
 
       - name: Check if server is up
         run: |
-          curl -f http://EC2_HOST || exit 1
+          curl -f http://$EC2_HOST || exit 1
+          env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
